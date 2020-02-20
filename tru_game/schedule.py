@@ -6,7 +6,7 @@ class Day:
     def __init__(self, id):
         self.id = id
         self.signup_library = None
-        # Dict[Libray: set[Book]]
+        # Dict[Library: set[Book]]
         self.scanning_books = {}
     
     def valid(self):
@@ -63,6 +63,6 @@ class Schedule:
             raise ValueError("Library not signed up yet")
         day.scanning_books[libray].add(book)
 
-        
+
 
 
