@@ -1,15 +1,16 @@
 from dataclasses import dataclass
 
-@dataclass
 class Book:
-    id: int
-    score: int
+    def __init__(self, id, score):
+        self.id = id
+        self.score = score
 
-@dataclass
 class Library:
-    id: int
-    books: set
-    signup_time: int
-    scans_per_day: int
+    def __init__(self, id, books, signup_time, scans_per_day):
+        self.id = id
+        self.books = books
+        self.signup_time = signup_time
+        self.scans_per_day = scans_per_day
+
 
 
