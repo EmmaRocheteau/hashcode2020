@@ -22,9 +22,11 @@ for remaining_line in file.readlines():
         library_id += 1
         library_description = True
 
-schedule = Schedule(total_days)
+empty_schedule = Schedule(total_days)
 
-# restructure for outputs
+# structure for outputs
+# def solution(book_list, library_list, empty_schedule):
+    # return schedule
 
 no_libraries_signed = len(schedule.libraries)
 order_of_libraries = [library.id for library in schedule.libraries]
