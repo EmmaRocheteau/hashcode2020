@@ -10,4 +10,3 @@ library_list = []
 library_desc = True
 for remaining_lines in file.readlines():
     if library_desc:
-        
