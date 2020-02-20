@@ -1,6 +1,9 @@
 from functools import total_ordering
 
 
+def score(books):
+    return sum(b.score for b in books)
+
 @total_ordering
 class Day:
     def __init__(self, id):
@@ -37,7 +40,7 @@ class Schedule:
         self.free_signup_day = self.days[0]
 
     def score(self):
-        return sum(b.score for b in self.books_scanned)
+        return score(self.books_scanned)
     
 
     def valid(self):
@@ -53,7 +56,7 @@ class Schedule:
     def signup_library(self, lib):
         endday = self.days[self.free_signup_day.id + lib.signup_time]
         assert (endday.id) <= self.total_days
-        lib.sigup_assigned = (self.free_signup_day, endday)
+        lib.signup_assigned = (self.free_signup_day, endday)
         for day in self.days[self.free_signup_day.id:endday.id]:
             day.signup_library = lib
             day.scanning_books = {}
