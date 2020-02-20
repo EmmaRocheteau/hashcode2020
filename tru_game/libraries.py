@@ -1,9 +1,12 @@
+from collections import Counter
 from schedule import score
 
 class Book:
     def __init__(self, id, score):
         self.id = id
         self.score = score
+    def __repr__(self):
+        return f"(Book {self.id}, Score {self.score})"
 
 class Library:
     def __init__(self, id, books, signup_time, scans_per_day):
@@ -23,4 +26,13 @@ class Library:
     def score(self, no_books_to_score):
         # should be used when the books are sorted
         return score(self.books[:no_books_to_score])
+
+def book_frequencies(libraries):
+    freq = Counter()
+
+    for lib in libraries:
+        freq.update(lib.books)
+    # for book, fre in freq.items():
+    #     book.frequency = fre
+    return freq
 

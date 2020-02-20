@@ -1,5 +1,5 @@
 import sys
-from libraries import Book, Library
+from libraries import Book, Library, book_frequencies
 from schedule import Schedule, Day
 from greedy_library_search import greedy
 
@@ -23,6 +23,7 @@ for remaining_line in file.readlines():
         library_id += 1
         library_description = True
 
+print(book_frequencies(library_list))
 empty_schedule = Schedule(total_days, library_list)
 
 # structure for outputs
