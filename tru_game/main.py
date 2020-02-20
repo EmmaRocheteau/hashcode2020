@@ -8,5 +8,8 @@ book_list = [Book(book_id, int(book_score)) for book_id, book_score in enumerate
 
 library_list = []
 library_desc = True
-for remaining_lines in file.readlines():
+for remaining_line in file.readlines():
     if library_desc:
+        books, signup_process, days = remaining_line
+        library_desc = False
+    else: 
