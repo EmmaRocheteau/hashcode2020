@@ -1,4 +1,4 @@
-def main(schedule):
+def greedy(schedule):
     for l in schedule.unused_libraries:
         l.sort_books()
     greedy_library_search(schedule)

@@ -1,6 +1,7 @@
 import sys
 from libraries import Book, Library
 from schedule import Schedule, Day
+from greedy_library_search import greedy
 
 # parse input into a list of available books and a list of libraries
 
@@ -27,6 +28,8 @@ empty_schedule = Schedule(total_days, library_list)
 # structure for outputs
 # def solution(empty_schedule):
     # return schedule
+
+schedule = greedy(schedule)
 
 no_libraries_signed = len(schedule.libraries)
 order_of_libraries = [library.id for library in schedule.libraries]
