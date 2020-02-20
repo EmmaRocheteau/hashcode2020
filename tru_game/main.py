@@ -28,15 +28,15 @@ empty_schedule = Schedule(total_days, library_list)
 # def solution(empty_schedule):
     # return schedule
 
-# no_libraries_signed = len(schedule.libraries)
-# order_of_libraries = [library.id for library in schedule.libraries]
+no_libraries_signed = len(schedule.libraries)
+order_of_libraries = [library.id for library in schedule.libraries]
 
-# output = open('{}.out'.format(file.name[:-3]), 'w')
-# output.write(str(no_libraries_signed) + '\n')
-# output.write(' '.join(map(str, order_of_libraries)) + '\n')
+output = open('{}.out'.format(file.name[:-3]), 'w')
+output.write(str(no_libraries_signed) + '\n')
+output.write(' '.join(map(str, order_of_libraries)) + '\n')
 
-# for library_id, book_set in schedule.library_summaries().items():
-#     output.write('{} {}\n'.format(str(library_id), str(len(book_set))))
-#     output.write(' '.join(map(str, book_set)) + '\n')
+for library_id, book_set in schedule.library_summaries().items():
+    output.write('{} {}\n'.format(str(library_id), str(len(book_set))))
+    output.write(' '.join(map(str, book_set)) + '\n')
 
-# output.close()
+output.close()

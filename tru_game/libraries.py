@@ -22,5 +22,5 @@ class Library:
 
     def score(self, no_books_to_score):
         # should be used when the books are sorted
-        return score(self.books.score[:no_books_to_score])
+        return score(self.books[:no_books_to_score])
 
