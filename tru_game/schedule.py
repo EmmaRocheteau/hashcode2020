@@ -31,11 +31,12 @@ class Day:
         return self.id < other.id
 
 class Schedule:
-    def __init__(self, total_days):
+    def __init__(self, total_days, unused_libraries):
         self.total_days = total_days
         self.days = [Day(i) for i in range(total_days)]
         self.books_scanned = set()
-        self.libraries = []
+        self.signed_libraries = []
+        self.unused_libraries = unused_libraries
         self.free_signup_day = self.days[0]
 
     def score(self):
@@ -43,8 +44,8 @@ class Schedule:
     
 
     def valid(self):
-        if not all(l.valid_signup() for l in self.libraries):
-            print("Not all libraries have valid signup periods")
+        if not all(l.valid_signup() for l in self.signed_libraries):
+            print("Not all signed_libraries have valid signup periods")
             return False
         if not all(d.valid() for d in self.days):
             print("Not all days are valid")
@@ -59,12 +60,25 @@ class Schedule:
         for day in self.days[self.free_signup_day.id:endday.id]:
             day.signup_library = lib
             day.scanning_books = {}
-        self.libraries.append(lib)
+        self.signed_libraries.append(lib)
+        self.free_signup_day = endday
 
     def submit_book(self, library, book, day):
-        if library not in self.libraries:
+        library.books.remove(book)
+        if library not in self.signed_libraries:
             raise ValueError("Library not signed up yet")
         day.scanning_books[library].add(book)
+        for lib in self.unused_libraries:
+            if book in lib.books:
+                lib.books.remove(book)
+    
+    def library_summaries(self):
+        sumas = {lib: [] for lib in self.signed_libraries}
+        for day in self.days:
+            for lib, books in day.scanning_books.items():
+                sumas[lib] += list(books)
+        
+        return sumas
 
 
 

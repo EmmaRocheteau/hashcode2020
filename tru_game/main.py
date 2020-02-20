@@ -35,7 +35,7 @@ empty_schedule = Schedule(total_days, library_list)
 # output.write(str(no_libraries_signed) + '\n')
 # output.write(' '.join(map(str, order_of_libraries)) + '\n')
 
-# for library_id, book_set in schedule.library_summaries:
+# for library_id, book_set in schedule.library_summaries().items():
 #     output.write('{} {}\n'.format(str(library_id), str(len(book_set))))
 #     output.write(' '.join(map(str, book_set)) + '\n')
 
