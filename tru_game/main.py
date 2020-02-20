@@ -1,5 +1,6 @@
 import sys
 from libraries import Book, Library
+from schedule import Schedule, Days
 
 # parse input into a list of available books and a list of libraries
 
@@ -23,4 +24,17 @@ for remaining_line in file.readlines():
 
 schedule = Schedule(total_days)
 
-#
+# restructure for outputs
+
+no_libraries_signed = len(schedule.libraries)
+order_of_libraries = [library.id for library in schedule.libraries]
+
+output = open('{}.out'.format(file.name[:-3]), 'w')
+output.write(str(no_libraries_signed) + '\n')
+output.write(' '.join(map(str, order_of_libraries)) + '\n')
+
+for library_id, book_set in schedule.library_summaries:
+    output.write('{} {}\n'.format(str(library_id), str(len(book_set))))
+    output.write(' '.join(map(str, book_set)) + '\n')
+
+output.close()

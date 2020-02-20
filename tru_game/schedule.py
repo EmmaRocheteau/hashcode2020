@@ -4,7 +4,7 @@ class Day:
     def __init__(self, id):
         self.id = id
         self.signup_library = None
-        # Dict[Libray: set[Book]]
+        # Dict[Library: set[Book]]
         self.scanning_books = {}
     
     def valid(self):
@@ -24,7 +24,7 @@ class Day:
 class Schedule:
     def __init__(self, total_days):
 
-        self.daya = [Day(i) for i in range(total_days)]
+        self.days = [Day(i) for i in range(total_days)]
         self.books_scanned = set()
     
     def score(self):
