@@ -61,6 +61,7 @@ class Schedule:
             day.signup_library = lib
             day.scanning_books = {}
         self.signed_libraries.append(lib)
+        self.unused_libraries.remove(lib)
         self.free_signup_day = endday
 
     def submit_book(self, library, book, day):
