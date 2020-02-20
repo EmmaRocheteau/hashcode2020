@@ -16,3 +16,5 @@ class Library:
         return (self.signup_assigned[1] - self.signup_assigned[0]) == self.signup_time
 
     
+    def sort_books(self):
+        self.books.sort(reverse=True, key=lambda x: x.score)
