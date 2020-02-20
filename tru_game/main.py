@@ -1,5 +1,5 @@
 import sys
-from libraries import Book, Library
+from libraries import Book, Library, book_frequencies
 from schedule import Schedule, Day
 
 # parse input into a list of available books and a list of libraries
@@ -22,7 +22,8 @@ for remaining_line in file.readlines():
         library_id += 1
         library_description = True
 
-empty_schedule = Schedule(total_days)
+print(book_frequencies(library_list))
+empty_schedule = Schedule(total_days, library_list)
 
 # structure for outputs
 # def solution(book_list, library_list, empty_schedule):

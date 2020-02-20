@@ -1,7 +1,11 @@
+from collections import Counter
+
 class Book:
     def __init__(self, id, score):
         self.id = id
         self.score = score
+    def __repr__(self):
+        return f"(Book {self.id}, Score {self.score})"
 
 class Library:
     def __init__(self, id, books, signup_time, scans_per_day):
@@ -18,3 +22,13 @@ class Library:
     
     def sort_books(self):
         self.books.sort(reverse=True, key=lambda x: x.score)
+
+
+def book_frequencies(libraries):
+    freq = Counter()
+
+    for lib in libraries:
+        freq.update(lib.books)
+    # for book, fre in freq.items():
+    #     book.frequency = fre
+    return freq
