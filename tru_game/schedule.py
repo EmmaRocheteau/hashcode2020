@@ -67,6 +67,8 @@ class Schedule:
         library.books.remove(book)
         if library not in self.signed_libraries:
             raise ValueError("Library not signed up yet")
+        if library not in day.scanning_books:
+            day.scanning_books[library] = set()
         day.scanning_books[library].add(book)
         for lib in self.unused_libraries:
             if book in lib.books:

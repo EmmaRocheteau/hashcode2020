@@ -9,7 +9,7 @@ def greedy_library_search(schedule):
     # function has to choose library from the list of non used libraries, and then calculate the updated schedule
     prev_pot_score = 0
     for l in schedule.unused_libraries:
-        remaining_time = schedule.free_signup_day.id - l.signup_time
+        remaining_time = schedule.total_days - schedule.free_signup_day.id - l.signup_time
         if remaining_time < 0:
             continue
         max_books_scanned = min(remaining_time * l.scans_per_day, len(l.books))
