@@ -1,3 +1,5 @@
+from schedule import score
+
 class Book:
     def __init__(self, id, score):
         self.id = id
@@ -15,6 +17,10 @@ class Library:
     def valid_signup(self):
         return (self.signup_assigned[1] - self.signup_assigned[0]) == self.signup_time
 
-    
     def sort_books(self):
         self.books.sort(reverse=True, key=lambda x: x.score)
+
+    def score(self, no_books_to_score):
+        # should be used when the books are sorted
+        return score(self.books.score[:no_books_to_score])
+
